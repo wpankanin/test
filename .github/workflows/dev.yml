@@ -1,0 +1,14 @@
+name: test deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - run: yarn
+      - run: REACT_APP_ENV=stag yarn build:prod
